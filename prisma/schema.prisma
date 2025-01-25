@@ -10,7 +10,7 @@ generator client {
 
 datasource db {
   provider = "mongodb"
-  url      = env("DATABASE_URL")
+  url      = "mongodb+srv://boombroks:123456780a@cluster0.cbzop.mongodb.net/test" 
 }
 model User {
   id    String  @id @default(auto()) @map("_id") @db.ObjectId
