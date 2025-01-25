@@ -3,9 +3,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CryptoApiModule } from './crypto-api/crypto-api.module';
 import { DbFillCryptoModule } from './db-fill-crypto/db-fill-crypto.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [CryptoApiModule, DbFillCryptoModule],
+  imports: [CryptoApiModule, DbFillCryptoModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
