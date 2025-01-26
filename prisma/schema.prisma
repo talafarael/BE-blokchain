@@ -17,6 +17,7 @@ model User {
   email String  @unique
   name  String
   password String
+  iconImg String
 }
 
 model CryptoPrice {
@@ -25,6 +26,7 @@ model CryptoPrice {
   name  String
   image String
   usd String
+
 
 
 }

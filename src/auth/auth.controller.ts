@@ -20,8 +20,11 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
   @Post('registretion')
   @UsePipes(new ValidationPipe({ transform: true }))
-  registretion(@Body() data: IRegistretion) {
-    return this.authService.registretion(data);
+  registretion(
+    @Body() data: IRegistretion,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return this.authService.registretion(data, res);
   }
   @Post('login')
   @UsePipes(new ValidationPipe({ transform: true }))

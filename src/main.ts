@@ -7,6 +7,7 @@ async function bootstrap() {
   app.enableCors({
     origin: '*', // Replace '*' with specific domains for better security
   });
+
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();

@@ -10,7 +10,7 @@ import * as bcrypt from 'bcrypt';
 @Injectable()
 export class AuthService {
   constructor(private prisma: PrismaService) {}
-  async registretion(data: IRegistretion) {
+  async registretion(data: IRegistretion, res: Response) {
     try {
       const user = await this.prisma.user.findFirst({
         where: {
@@ -28,8 +28,13 @@ export class AuthService {
           email: data.email,
           name: data.name,
           password: hashedPassword,
+          iconImg: '',
         },
       });
+      const token = jwt.sign({ id: newUser.id }, process.env.SECRET, {
+        expiresIn: '1h',
+      });
+      res.cookie('token', token);
       return 'This action returns all cats';
     } catch (e) {
       throw new NotFoundException(e);
