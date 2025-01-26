@@ -16,8 +16,6 @@ const s3 = new S3({
 // uploads a file to s3
 export async function uploadFile(file) {
   const name = generateArticle();
-  console.log('Uploading file:', file);
-  console.log('Generated file name:', name);
 
   if (!file || !file.buffer) {
     throw new Error('Invalid file: buffer is missing.');

@@ -23,4 +23,9 @@ export class CryptoApiController {
   getCrypto(@Query('page') page: number) {
     return this.cryptoApiService.getCrypto(page || 1);
   }
+  @Get('get-crypto-one')
+  @UsePipes(new ValidationPipe({ transform: true }))
+  getOneCrypto(@Query('crypto') crypto: string) {
+    return this.cryptoApiService.getOneCrypto(crypto);
+  }
 }

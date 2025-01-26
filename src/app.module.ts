@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { UserVerifyMiddleware } from './user-verify/user-verify.middleware';
 import { PrismaModule } from './prisma.module';
+import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
     CryptoApiModule,
@@ -14,6 +15,7 @@ import { PrismaModule } from './prisma.module';
     AuthModule,
     UserModule,
     PrismaModule,
+    ConfigModule.forRoot(),
   ],
   controllers: [AppController],
   providers: [AppService],

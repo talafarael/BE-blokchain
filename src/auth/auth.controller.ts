@@ -19,7 +19,6 @@ import { Response } from 'express';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
   @Post('registretion')
-  @UsePipes(new ValidationPipe({ transform: true }))
   registretion(
     @Body() data: IRegistretion,
     @Res({ passthrough: true }) res: Response,

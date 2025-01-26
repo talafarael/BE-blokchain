@@ -32,4 +32,28 @@ export class CryptoApiService {
       throw new NotFoundException(e);
     }
   }
+  async getOneCrypto(crypto: string) {
+    try {
+      const cryptoDay = await this.prisma.cryptoPrice.findFirst({
+        include: {
+          price: true,
+        },
+      });
+      if (!crypto) {
+        throw new NotFoundException('crypto dont find');
+      }
+
+      const cryptoDetails = await lastValueFrom(
+        this.httpService.get(
+          `https://api.coingecko.com/api/v3/coins/${crypto}`,
+        ),
+      );
+      return {
+        cryptoDay,
+        cryptoDetails: cryptoDetails.data,
+      };
+    } catch (e) {
+      throw new NotFoundException(e);
+    }
+  }
 }

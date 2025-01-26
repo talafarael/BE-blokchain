@@ -34,6 +34,11 @@ export class AuthService {
       const token = jwt.sign({ id: newUser.id }, process.env.SECRET, {
         expiresIn: '1h',
       });
+      res.cookie('token', token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'strict',
+      });
       res.cookie('token', token);
       return 'This action returns all cats';
     } catch (e) {
@@ -60,7 +65,11 @@ export class AuthService {
       const token = jwt.sign({ id: user.id }, process.env.SECRET, {
         expiresIn: '1h',
       });
-      res.cookie('token', token);
+      res.cookie('token', token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'strict',
+      });
       return token;
     } catch (e) {
       throw new NotFoundException(e);
