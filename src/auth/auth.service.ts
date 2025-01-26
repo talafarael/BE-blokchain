@@ -63,9 +63,7 @@ export class AuthService {
       res.cookie('token', token);
       return token;
     } catch (e) {
-      throw new NotFoundException(
-        e.message || 'An error occurred during login',
-      );
+      throw new NotFoundException(e);
     }
   }
 }

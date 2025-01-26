@@ -19,9 +19,8 @@ export class DbFillCryptoService {
           },
         },
       });
-      console.log('Data successfully inserted:', newCryptoPrice);
     } catch (error) {
-      console.error('Error inserting data:', error);
+      console.error(' error);
     }
   }
 }

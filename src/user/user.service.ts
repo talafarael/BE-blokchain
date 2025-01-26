@@ -10,14 +10,6 @@ export class UserService {
   constructor(private prisma: PrismaService) {}
 
   async changeIcon(file: Multer.File, req: any) {
-    if (!file) {
-      throw new Error('Файл не передано');
-    }
-
-    if (!req.id) {
-      throw new Error('Некоректний запит: відсутній id користувача');
-    }
-
     try {
       console.log(file.mainImg[0]);
       const link = await uploadFile(file.mainImg[0]);
@@ -29,8 +21,8 @@ export class UserService {
 
       return { user };
     } catch (error) {
-      console.error('Помилка зміни іконки:', error);
-      throw new Error('Не вдалося змінити іконку');
+      console.error(error);
+      throw new Error('Error change img');
     }
   }
 }
