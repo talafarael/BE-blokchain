@@ -24,7 +24,6 @@ model CryptoPrice {
   price Price[]  @relation("CryptoPricePrices")
   name  String
   image String
-  price_change_percentage_week Int
   usd String
 
 
